@@ -29,6 +29,9 @@ int main(int argc, char *argv[])
     // add a view
     QGraphicsView * view = new QGraphicsView(scene);
 
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
     // show the view
     view->show();
 
