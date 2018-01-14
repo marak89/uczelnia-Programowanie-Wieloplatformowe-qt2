@@ -1,5 +1,9 @@
 #include "Bullet.h"
 #include <QTimer>
+#include <QGraphicsScene>
+#include <QDebug>
+#include <QList>
+#include <Enemy.h>
 Bullet::Bullet()
 {
     // draw
@@ -15,6 +19,24 @@ Bullet::Bullet()
 
 void Bullet::move()
 {
- //
+     // jezeli bullet styka sie z enemy to zniszcz kolidujące elementy
+    QList<QGraphicsItem *> coliding_items = collidingItems();
+    for (int i = 0, n = coliding_items.size(); i< n;i++){
+        if(typeid(*(coliding_items[i])) == typeid(Enemy)){
+            scene()->removeItem(coliding_items[i]);
+            scene()->removeItem(this);
+
+            delete coliding_items[i];
+            delete this;
+            return;
+        }
+    }
+
+
     setPos(x(),y()-10);
+    if(pos().y() + rect().height() < 0){
+        scene()->removeItem(this);
+        delete this;
+        qInfo() << "Bullet removed";
+    }
 }

@@ -3,6 +3,7 @@
 #include <QKeyEvent>
 #include "Bullet.h"
 #include <QGraphicsScene>
+#include <Enemy.h>
 void myrect::keyPressEvent(QKeyEvent *event)
 {
     //qInfo() << "key pressed ";
@@ -11,14 +12,11 @@ void myrect::keyPressEvent(QKeyEvent *event)
     }
 
     else if ( event->key() == Qt::Key_Right ){
-        setPos(x()+10, y());
+        if(pos().x()+rect().width() < 800){
+            setPos(x()+10, y());
+        }
     }
-    else if ( event->key() == Qt::Key_Up){
-        setPos(x(), y()-10);
-    }
-    else if ( event->key() == Qt::Key_Down ){
-        setPos(x(), y()+10);
-    }
+
     else if ( event->key() == Qt::Key_Space ){
         // create a boolet
 
@@ -27,4 +25,11 @@ void myrect::keyPressEvent(QKeyEvent *event)
         bullet->setPos(x(),y());
         scene()->addItem(bullet);
     }
+}
+
+void myrect::spawn()
+{
+    // create an enemy
+    Enemy * enemy = new Enemy();
+    scene()->addItem(enemy);
 }
