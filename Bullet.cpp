@@ -4,6 +4,10 @@
 #include <QDebug>
 #include <QList>
 #include <Enemy.h>
+#include <Score.h>
+
+extern Score * score;
+
 Bullet::Bullet()
 {
     // draw
@@ -23,6 +27,8 @@ void Bullet::move()
     QList<QGraphicsItem *> coliding_items = collidingItems();
     for (int i = 0, n = coliding_items.size(); i< n;i++){
         if(typeid(*(coliding_items[i])) == typeid(Enemy)){
+            // zwiększ wynik
+            score->increase();
             scene()->removeItem(coliding_items[i]);
             scene()->removeItem(this);
 
@@ -37,6 +43,6 @@ void Bullet::move()
     if(pos().y() + rect().height() < 0){
         scene()->removeItem(this);
         delete this;
-        qInfo() << "Bullet removed";
+        //qInfo() << "Bullet removed";
     }
 }

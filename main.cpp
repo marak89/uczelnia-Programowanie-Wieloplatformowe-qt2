@@ -15,6 +15,11 @@ int main(int argc, char *argv[])
     // scena
     QGraphicsScene * scene = new QGraphicsScene();
 
+    // create the score
+    Score * score = new Score();
+    scene->addItem(score);
+
+
     // item na scene
     myrect * player = new myrect();
     player->setRect(0,0,100,100);
@@ -26,13 +31,6 @@ int main(int argc, char *argv[])
     player->setFlag(QGraphicsItem::ItemIsFocusable);
     player->setFocus();
 
-    // create the score
-    //Score score = new Score();
-    //scene->addItem(score);
-
-
-    //qInfo() << "app started ";
-    //qInfo() << "Date:" << QDate::currentDate();
 
     // add a view
     QGraphicsView * view = new QGraphicsView(scene);

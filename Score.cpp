@@ -10,7 +10,7 @@ setFont(QFont("times",16));
 
 }
 
-void Score::inrease()
+void Score::increase()
 {
     score++;
 }
