@@ -24,16 +24,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    myrect.cpp \
+    mainwindow.cpp \
     Bullet.cpp \
     Enemy.cpp \
-    Score.cpp
+    Score.cpp \
+    Game.cpp \
+    Health.cpp \
+    Player.cpp
 
 HEADERS  += mainwindow.h \
-    myrect.h \
     Bullet.h \
     Enemy.h \
-    Score.h
+    Score.h \
+    Game.h \
+    Health.h  \
+    Player.h
+
+
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    zasoby.qrc
